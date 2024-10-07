@@ -60,25 +60,31 @@
 {
    step4 : js die card create and dynamic value use...
 
-   dataArg.forEach(i => {
-      let card = document.createElement('div')
-      card.classList = 'card bg-white text-black shadow-xl pt-5';
+   const displayData = (dataArg) => {
 
-      card.innerHTML = `
-         <figure>
-            <img src="${i.image}" alt="Shoes" />
-         </figure>
-         <div class="card-body">
-            <h2 class="card-title">${i.phone_name}</h2>
-            <p>${i.slug}</p>
-            <div class="card-actions justify-end">
-               <button class="btn btn-success text-white">Buy Now</button>
+      let cardContainer = document.getElementById('card_container')
+      cardContainer.textContent = ''
+      
+      dataArg.forEach(i => {
+         let card = document.createElement('div')
+         card.classList = 'card bg-white text-black shadow-xl pt-5';
+
+         card.innerHTML = `
+            <figure>
+               <img src="${i.image}" alt="Shoes" />
+            </figure>
+            <div class="card-body">
+               <h2 class="card-title">${i.phone_name}</h2>
+               <p>${i.slug}</p>
+               <div class="card-actions justify-end">
+                  <button class="btn btn-success text-white">Buy Now</button>
+               </div>
             </div>
-         </div>
-      `;
+         `;
 
-      cardContainer.appendChild(card)
-   });
+         cardContainer.appendChild(card)
+      });
+   }
 }
 
 
@@ -128,4 +134,57 @@
       loadPhones(searchValue);
    }
 
+   const displayData = (dataArg) => {
+      let cardContainer = document.getElementById('card_container')
+      cardContainer.textContent = ''
+   }
+
+}
+
+
+{
+   step8 : first 6 item slicing...
+
+   const displayPhones = (phonesArg) => {
+      displayData(phonesArg);
+   };
+
+
+   const loadPhones = async (searchArg) => {
+      let data = await response.json()
+      let phones = data.data
+      displayPhones(phones);
+   }
+
+   const displayPhones = (phoneArg) => {
+      displayData(phoneArg.slice(0, 6))
+   }
+}
+
+
+{
+   step9 : showAll button ...
+
+   <section>
+      <div id="card_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-5 pb-20">
+         
+      </div>
+
+      <div id="showBtn_container" class="hidden text-center -mt-14 mb-14 relative">
+         <button id="show_btn" class="btn btn-success text-white">Show All</button>
+      </div>
+   </section>
+
+
+   const displayPhones = (phonesArg) => {
+      let showBtnContainer = document.getElementById('showBtn_container');
+
+      if (phonesArg.length > 6) {
+         showBtnContainer.classList.remove('hidden');
+      } else {
+         showBtnContainer.classList.add('hidden');
+      }
+
+      displayData(phonesArg.slice(0, 6))
+   }
 }
