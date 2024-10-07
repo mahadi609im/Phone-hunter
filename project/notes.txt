@@ -211,3 +211,75 @@
       
    });
 }
+
+
+{
+   step11 : Alert message ...
+
+   <section>
+      <div id="alert_msg" class="my-5">
+         <div role="alert" class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>No result found.</span>
+         </div>
+      </div>
+
+      <div id="card_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-5 pb-20">
+         
+      </div>
+
+      <div id="showAll_btn" class="hidden text-center -mt-14 mb-20 relative">
+         <button class="btn btn-success text-white" id="show_btn">showAll</button>
+      </div>
+   </section>
+}
+
+
+{
+   step12 : js die alert message...
+
+
+   <div id="alert_msg" class="hidden my-5"></div>
+
+   const displayData = (dataArg) => {
+      let cardContainer = document.getElementById('card_container')
+      cardContainer.textContent = ''
+
+      let alertMsg = document.getElementById('alert_msg')
+      alertMsg.classList.remove('hidden')
+
+      alertMsg.innerHTML = `
+         <div role="alert" class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>No result found.</span>
+         </div>
+      `;
+   }
+}
+
+
+{
+   step13 : alert message show and hide...
+
+   let alertMsg = document.getElementById('alert_msg');
+
+   if (dataArg.length === 0) {
+      alertMsg.classList.remove('hidden')
+      
+      alertMsg.innerHTML = `
+         <div role="alert" class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span>No result found.</span>
+         </div>
+      `;
+   } else {
+      alertMsg.classList.add('hidden')
+   }
+}
