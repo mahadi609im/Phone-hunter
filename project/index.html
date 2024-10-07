@@ -1,1 +1,53 @@
-
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>phone hunter</title>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <body>
+      <header>
+         <h3 class="text-center text-2xl font-semibold mt-5">Phone hunter</h3>
+         <hr class="border border-gray-500 my-5" />
+      </header>
+      <main class="container mx-auto px-5 md:px-0 mb-10">
+         <div id="alert_msg" class=" hidden my-5"></div>
+         <div id="search_container" class="flex gap-3 justify-center">
+            <input type="text" id="input_field" placeholder="Type here" class="input input-bordered input-success w-full max-w-xs" />
+            <button class="btn btn-success text-white" onclick="searchPhones()">Search</button>
+         </div>
+         <div id="loading" class="text-center my-10 hidden">
+            <span class="loading loading-infinity loading-lg text-green-500"></span>
+            <div id="loading_msg"></div>
+         </div>
+         <div id="phone_container" class="my-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+            
+         </div>
+         
+         <div id="show_details">
+            <!-- Open the modal using ID.showModal() method -->
+            <dialog id="show_details_modal" class="modal">
+               <div class="modal-box">
+                  <div id="details_container">
+                     
+                  </div>
+                  <div class="modal-action">
+                     <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-success text-white">Close</button>
+                     </form>
+                  </div>
+               </div>
+            </dialog>
+         </div>
+         
+         <div id="showBtn_container" class="hidden text-center -mt-10 md:mt-10 relative">
+            <button id="show_btn" class="btn btn-success text-white">Show All</button>
+         </div>
+      </main>
+      
+      <script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+   </body>
+</html>
