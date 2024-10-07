@@ -1,1 +1,131 @@
+{
+   step1 : loadPhones...
 
+   const loadPhones = async () => {
+      let response = await fetch(
+         `https://openapi.programming-hero.com/api/phones?search=iphone`
+      );
+      let data = await response.json()
+      let phones = data.data
+      console.log(phones);
+   }
+
+   loadPhones()
+}
+
+
+{
+   step2 : displayData...
+
+   const loadPhones = async () => {
+      let response = await fetch(
+         `https://openapi.programming-hero.com/api/phones?search=iphone`
+      );
+      let data = await response.json();
+      let phones = data.data;
+      displayData(phones);
+   };
+
+   const displayData = (dataArg) => {
+      dataArg.forEach(i => {
+         console.log(i)
+      });
+   };
+
+}
+
+
+{
+   step3 : daisyui theke card nie asha...
+
+   <section>
+      <div id="card_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-5 pb-20">
+         <div class="card bg-base-100 w-96 shadow-xl">
+            <figure>
+               <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+            </figure>
+            <div class="card-body">
+               <h2 class="card-title">Shoes!</h2>
+               <p>If a dog chews shoes whose shoes does he choose?</p>
+               <div class="card-actions justify-end">
+                  <button class="btn btn-primary">Buy Now</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+}
+
+
+{
+   step4 : js die card create and dynamic value use...
+
+   dataArg.forEach(i => {
+      let card = document.createElement('div')
+      card.classList = 'card bg-white text-black shadow-xl pt-5';
+
+      card.innerHTML = `
+         <figure>
+            <img src="${i.image}" alt="Shoes" />
+         </figure>
+         <div class="card-body">
+            <h2 class="card-title">${i.phone_name}</h2>
+            <p>${i.slug}</p>
+            <div class="card-actions justify-end">
+               <button class="btn btn-success text-white">Buy Now</button>
+            </div>
+         </div>
+      `;
+
+      cardContainer.appendChild(card)
+   });
+}
+
+
+{
+   step5 : searching er jonno input field & button nea...
+
+   <section id="search_box" class="py-3 bg-green-200 flex justify-center gap-3">
+      <input type="text" id="search_input" placeholder="Search here" class="input input-bordered input-success w-full max-w-xs" />
+      <button class="btn btn-success text-white">search</button>
+   </section>
+}
+
+
+{
+   step6 : searchFunc create & inputValue nea and searchFunc k html a call...
+
+   const searchFunc = () => {
+      let searchInput = document.getElementById('search_input');
+      let searchValue = searchInput.value
+      console.log(searchValue)
+      searchInput.value = ''
+   }
+
+
+   <button onclick="searchFunc()" class="btn btn-success text-white">search</button>
+}
+
+
+{
+   step7 : searchArg pas & searchFunc a loadPhones k call...
+
+   const loadPhones = async (searchArg) => {
+      let response = await fetch(
+      `https://openapi.programming-hero.com/api/phones?search=${searchArg}`
+      );
+      let data = await response.json()
+      let phones = data.data
+      displayData(phones);
+   }
+
+
+   
+   const searchFunc = () => {
+      let searchInput = document.getElementById('search_input');
+      let searchValue = searchInput.value
+      searchInput.value = ''
+      loadPhones(searchValue);
+   }
+
+}
