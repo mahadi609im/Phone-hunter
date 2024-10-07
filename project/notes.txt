@@ -163,7 +163,7 @@
 
 
 {
-   step9 : showAll button ...
+   step9 : showAll button show and hide ...
 
    <section>
       <div id="card_container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pt-5 pb-20">
@@ -187,4 +187,27 @@
 
       displayData(phonesArg.slice(0, 6))
    }
+}
+
+
+{
+   step10 : showAll button clicked and check then showAll content ...
+
+   const displayPhones = (phonesArg) => {
+      
+      displayData(phonesArg.slice(0, 6))
+
+      document.getElementById('show_btn').addEventListener('click', () => {
+         console.log('i am clicked')
+      });
+
+   }
+
+
+   document.getElementById('show_btn').addEventListener('click', () => {
+      displayData(phonesArg)
+      
+      showAllBtn.classList.add('hidden')
+      
+   });
 }
