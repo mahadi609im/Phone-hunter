@@ -283,3 +283,61 @@
       alertMsg.classList.add('hidden')
    }
 }
+
+
+{
+   step14 : daisyui use to laoding icon ...
+
+   <div id="loading_id" class="text-center my-5">
+      <span class="loading bg-green-500 loading-spinner loading-lg"></span>
+      <h3>Please check your internet connection</h3>
+   </div>
+}
+
+
+{
+   step15 : js die content create and show hide...
+
+   <div id="loading_id" class="text-center my-5 hidden">
+      
+   </div>
+
+
+   const loadingFunc = (isLoading) => {
+      let loadingId = document.getElementById('loading_id');
+
+      if (isLoading) {
+         loadingId.innerHTML = `
+            <span class="loading bg-green-500 loading-spinner loading-lg"></span>
+            <h3>Please check your internet connection</h3>
+         `;
+         loadingId.classList.remove('hidden')
+      }
+      else {
+         loadingId.classList.add('hidden')
+      }
+      
+   }
+}
+
+
+{
+   step16 : function call and loading true and false kora...
+
+   const searchFunc = () => { 
+      loadingFunc(true);
+      let searchInput = document.getElementById('search_input');
+      let searchValue = searchInput.value
+   }
+
+
+
+   const displayData = (dataArg) => {
+   
+      dataArg.forEach(i => {
+         
+      });
+
+      loadingFunc(false);
+   }
+}
