@@ -417,7 +417,41 @@
 }
 
 {
+   step20 : html modal content delete kore container nea...
+
+    <div class="modal-box">
+      <form method="dialog">
+         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <div id="modal_content">
+         
+      </div>
+   </div>
+}
+
+{
+   step21 : detailsPhone function create and call...
+
+   const detailsPhone = (detailsArg) => {
+      console.log(detailsArg);
+   }
+
+
+   const showDetails = async (id) => {
+      let response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+      let data = await response.json()
+      let phones = data.data
+      detailsPhone(phones.name);
+   }
+}
+
+{
    step20 : value pass...
+
+   const showDetails = async (id) => {
+      let phones = data.data
+      detailsPhone(phones);
+   }
 
    const detailsPhone = (detailsArg) => {
       let detailsContent = document.getElementById('details_content');
